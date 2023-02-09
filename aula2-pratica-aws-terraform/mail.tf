@@ -20,9 +20,10 @@ resource "aws_s3_bucket" "s3_bucket" { # criando um bucket dentro do aws
 
 resource "aws_s3_bucket_public_access_block" "s3_block" { # alterando o modo de acesso ao bucket, transformando ele em um bucket com acesso privado
   bucket = aws_s3_bucket.s3_bucket.id
+  
   block_public_acls = true
   block_public_policy = true
-  ignore_public_acls = true #torna os arquivos dentro do bucket restrito
+  ignore_public_acls = true # torna os arquivos dentro do bucket restrito
   restrict_public_buckets = true
   
 }
