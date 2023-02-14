@@ -9,6 +9,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app
 
+# comando para startar o codigo dentro do container (no caso de agora com o codigo em Python)
 ENTRYPOINT [ "python" ]
 
+# mostrando para o comando entrypoint qual o arquivo principal para ser executado
 CMD [ "app.py" ]
