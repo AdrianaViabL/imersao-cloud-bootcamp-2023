@@ -149,14 +149,17 @@ wget https://tcb-public-events.s3.amazonaws.com/icp/mission2.zip
 unzip mission2.zip
 ```
 - Conecte ao MySQL DB em execução no Cloud SQL (assim que aparecer a janela para colocar a senha, insira welcome123456)
-
+```
 mysql --host=<public_ip_cloudsql> --port=3306 -u app -p
+```
+obs.: o ip publico está na tela da aba 'visão geral' no sql do google cloud
 
 - Após estar conectado ao banco de dados da instância, crie a tabela de produtos para testes.
 ```
 use dbcovidtesting;
 source mission2/pt/db/create_table.sql;
 show tables;
+desc records;
 exit;
 ```
 
@@ -188,6 +191,12 @@ cd ~/mission2_pt/mission2/pt/app
 gcloud builds submit --tag gcr.io/<PROJECT_ID>/luxxy-covid-testing-system-app-pt
 ```
 - Abra o Cloud Editor e edite o Kubernetes deployment file (luxxy-covid-testing-system.yaml) e atualize as variáveis abaixo (em vermelho) com o seu <PROJECT_ID> no caminho da imagem Docker no Google Container Registry, AWS Bucket, AWS Keys (do arquivo luxxy-covid-testing-system-pt-app1.csv) e o IP Privado do Cloud SQL Database.
+
+
+Obs.: A alteração tambem pode ser feita pelo editor do proprio clowd shell (iniciando pela linha 33 (PROJECT_ID), linha 42 (bucket name), 44 e 46 (S3 access e secret key)
+e a linha 48 (Endereço IP particular))
+Ir em Files e clicar em save (para salvar as alterações feitas com o editor do shell)
+
 ```
 cd ~/mission2_pt/mission2/pt/kubernetes
 luxxy-covid-testing-system.yaml
@@ -225,7 +234,7 @@ cd mission3_pt
 wget https://tcb-public-events.s3.amazonaws.com/icp/mission3.zip
 unzip mission3.zip
 ```
-- Conectar ao banco de dados MySQL no Cloud SQL. Senha: 
+- Conectar ao banco de dados MySQL no Cloud SQL. Senha: welcome123456
 ```
 mysql --host=<public_ip_address> --port=3306 -u app -p
 ```
