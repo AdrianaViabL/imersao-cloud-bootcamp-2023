@@ -1,8 +1,8 @@
 apiVersion: apps/v1
-kind: Deployment
-metadata:
+kind: Deployment 
+metadata: 
   name: tcb-vote-back
-spec:
+spec: # bloco aonde vamos configurar o pod tcb - um banco de dados em memoria do kubernetes
   replicas: 1
   selector:
     matchLabels:
@@ -26,12 +26,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: tcb-vote-back
-spec:
+spec: # configurando a porta para que a parte do front consiga acessar o bd temporario
   ports:
   - port: 6379
   selector:
     app: tcb-vote-back
----
+--- # parte que vai subir o pod tcb-vote-front 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -64,7 +64,7 @@ spec:
         env:
         - name: REDIS
           value: "tcb-vote-back"
----
+--- # configurando um ip publico para acessar a aplicação
 apiVersion: v1
 kind: Service
 metadata:
