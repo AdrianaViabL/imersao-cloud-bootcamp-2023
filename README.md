@@ -218,6 +218,11 @@ luxxy-covid-testing-system.yaml
 cd ~/mission2_pt/mission2/pt/kubernetes
 kubectl apply -f luxxy-covid-testing-system.yaml
 ```
+
+- Obs.: para ver o site rodando, vá até o Kubernets engine - serviços de entrada
+- clique na porta abaixo da opção 'pontos de extremidade'
+
+
 - Obtenha o IP Público e faça o teste da aplicação ([CLIQUE AQUI para baixar exemplo de Teste de COVID-19](https://tcb-public-events.s3.amazonaws.com/icp/mission2.zip))
 - Você deve visualizar a aplicação up & running! Congrats! 🎉
 
